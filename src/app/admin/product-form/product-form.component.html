@@ -1,29 +1,29 @@
-<form class="px-4 py-3">
+<form #f="ngForm" class="px-4 py-3" (ngSubmit)="save(f.value)" >
 
   <div class="form-group">
     <label for="title">Title</label>
-    <input type="text" id="title" class="form-control">
+    <input ngModel name="title" type="text" id="title" class="form-control">
   </div>
 
   <div class="form-group">
       <label for="price">Price</label>
       <div class="input-group-prepend">
           <span class="input-group-text">$</span>
-          <input type="number" id="price" class="form-control">
+          <input ngModel name="number" type="number" id="price" class="form-control">
       </div>
   </div>
 
     <div class="form-group">
       <label for="category">Category</label>
-      <select id="category">
+      <select ngModel name="category" id="category">
         <option value=""></option>
         <option *ngFor="let c of categories$ | async" [value]="c.$key">{{c.name}}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="image">Image Url</label>
-      <input type="text" id="image" class="form-control">
+      <label for="imageUrl">Image Url</label>
+      <input ngModel name="imageUrl" type="text" id="imageUrl" class="form-control">
     </div>
     
     <button class="btn btn-primary">Save</button>
