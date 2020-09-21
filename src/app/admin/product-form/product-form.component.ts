@@ -23,7 +23,7 @@ export class ProductFormComponent {
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private productService: ProductService) {
-    this.categories$ = categoryService.getCategories();
+    this.categories$ = categoryService.getAll();
 
     this.id = this.route.snapshot.paramMap.get('id');
     // Uses take here so that it will subscribe event to only once hence no need to unsubscribe again.
