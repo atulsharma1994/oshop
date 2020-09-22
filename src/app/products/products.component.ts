@@ -15,7 +15,7 @@ export class ProductsComponent {
   products$;
   filteredProducts: Product[] = [];
   products: Product[] = [];
-  categories$;
+  
   category: string;
 
   constructor(productService: ProductService, categoryService: CategoryService, router: ActivatedRoute) {
@@ -31,7 +31,6 @@ export class ProductsComponent {
           this.products
       });
 
-    this.categories$ = categoryService.getAll();
 
   }
 
