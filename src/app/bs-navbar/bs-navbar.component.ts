@@ -14,25 +14,15 @@ import { AuthService } from '../auth.service';
 export class BsNavbarComponent implements OnInit{
 
   appUser: AppUser;
-  // cart$;
-  shoppingItemsCount: number;
+  cart$;
+  
 
   constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) {
   }
 
   async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser );
-    let cart$ = await this.shoppingCartService.getCart();
-
-    cart$.subscribe(cart => {
-      this.shoppingItemsCount = 0;
-
-      for (let productId in cart.items) {
-        this.shoppingItemsCount += cart.items[productId].quantity;
-      }
-
-    });
-
+    this.cart$ = await this.shoppingCartService.getCart();
   }
 
   logout() {
